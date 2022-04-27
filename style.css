@@ -1,0 +1,721 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    color: white;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    background-color: transparent;
+    position: fixed;
+    z-index: 110;
+    width: 100%;
+    padding: 1rem;
+    border-bottom: 3px groove #333;
+    background-color: rgba(0, 0, 0, .8);
+    flex-wrap: wrap;
+}
+
+#wrapper {
+    display: none;
+}
+
+.ocultar {
+    flex-wrap: nowrap;
+    max-width: 80%;
+}
+
+nav,
+header a {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    z-index: 105;
+}
+
+
+/* botones A */
+.buttonA {
+    padding: 0.5em 1.5em;
+    border: 2px solid #ff2fff;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1rem;
+    transition: .3s;
+    z-index: 1;
+    font-family: inherit;
+    color: #ff2fff;
+}
+
+#registro {
+    background-color: #ddc400;
+    color: black;
+}
+
+.buttonA::before {
+    content: '';
+    width: 0;
+    height: 500%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #ff2fff;
+    transition: .5s ease-in-out;
+    display: block;
+    z-index: -1;
+}
+
+.buttonA:hover::before {
+    width: 105%;
+}
+
+.buttonA:hover {
+    color: #fff;
+}
+
+nav ul li a {
+    margin: 0.5rem
+}
+
+/* boton ver todo */
+
+button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+button.learn-more {
+    width: 12rem;
+    height: auto;
+}
+
+button.learn-more .circle {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: relative;
+    display: block;
+    margin: 0;
+    width: 3rem;
+    height: 3rem;
+    background: #282936;
+    border-radius: 1.625rem;
+}
+
+button.learn-more .circle .icon {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: #fff;
+}
+
+button.learn-more .circle .icon.arrow {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    left: 0.625rem;
+    width: 1.125rem;
+    height: 0.125rem;
+    background: none;
+}
+
+button.learn-more .circle .icon.arrow::before {
+    position: absolute;
+    content: "";
+    top: -0.29rem;
+    right: 0.0625rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-top: 0.125rem solid #fff;
+    border-right: 0.125rem solid #fff;
+    transform: rotate(45deg);
+}
+
+button.learn-more .button-text {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.75rem 0;
+    margin: 0 0 0 1.85rem;
+    color: #ff2fff;
+    font-weight: 700;
+    line-height: 1.6;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+button:hover .circle {
+    width: 100%;
+    background-color: #ddc400;
+}
+
+button:hover .circle .icon.arrow {
+    background: #fff;
+    transform: translate(1rem, 0);
+}
+
+button:hover .button-text {
+    color: #fff;
+}
+
+.btnVerTodo {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+}
+
+
+/* -------------------------PORTADA---------- */
+
+div .divisor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+div svg {
+    width: 100px;
+    height: auto;
+    margin: 0 2rem;
+    cursor: pointer;
+    overflow: visible;
+}
+
+div svg polygon,
+div svg path {
+    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+div svg:hover polygon,
+div svg:hover path {
+    transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
+    fill: #ddc400;
+}
+
+div svg:hover .arrow {
+    animation: arrow-anim 2.5s cubic-bezier(0.2, 1, 0.3, 1) infinite;
+}
+
+div svg:hover .arrow-fixed {
+    animation: arrow-fixed-anim 2.5s cubic-bezier(0.2, 1, 0.3, 1) infinite;
+}
+
+@keyframes arrow-anim {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    5% {
+        transform: translateX(-0.1rem);
+    }
+
+    100% {
+        transform: translateX(1rem);
+        opacity: 0;
+    }
+}
+
+@keyframes arrow-fixed-anim {
+    5% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* main estilos */
+
+
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 6.5rem;
+    background-color: #000;
+    max-width: 100%;
+}
+
+#divisor {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 6.5rem);
+    z-index: 40;
+    margin-top: 6.5rem;
+}
+
+#divisor a {
+    text-decoration: none;
+}
+
+.divisor {
+    display: flex;
+    width: 100%;
+    height: calc(100% - 6.5rem);
+}
+
+.left,
+.right {
+    display: flex;
+    width: 50%;
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+}
+
+.titulo-portada {
+    font-size: 5rem;
+    font-weight: 900;
+    color: white;
+}
+
+.titulo-portada:hover {
+    animation: arrow-anim 2.5s cubic-bezier(0.2, 1, 0.3, 1) infinite;
+}
+
+.titulo-portada:hover {
+    animation: arrow-fixed-anim 2.5s cubic-bezier(0.2, 1, 0.3, 1) infinite;
+}
+
+@keyframes arrow-anim {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    5% {
+        transform: translateX(-0.1rem);
+    }
+
+    100% {
+        transform: translateX(1rem);
+        opacity: 0;
+    }
+}
+
+@keyframes arrow-fixed-anim {
+    5% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.containerImg {
+    position: fixed;
+    bottom: 0;
+    height: 100vh;
+    width: 100%;
+    background-image: url(./img/fondo.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.filterbg {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    opacity: .5;
+}
+
+section {
+    z-index: 100;
+    padding: 2rem 0;
+    margin-bottom: 3rem;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.titulos {
+    font-size: 3rem;
+    text-align: center;
+    color: white;
+}
+
+.titulos h1,
+.titulos h2 {
+    font-size: 4rem;
+}
+
+.titulos {
+    margin-top: 6.5rem;
+}
+
+.titulo-reg {
+    margin-top: 0;
+}
+
+.titulos p {
+    font-size: 2rem;
+}
+
+.filtros{
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.filtros input{
+    width: 50%;
+}
+.filtros select{
+    border-radius: 10px;
+}
+
+
+.content-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 80%;
+    width: 70%;
+    padding: 1rem;
+    max-height: 90%;
+    margin: 0% auto;
+
+}
+
+.card1,
+.card2 {
+    border: 3px solid #333;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 10px;
+    max-width: 80%;
+    justify-content: center;
+    margin:1.5rem;
+    padding: 2rem;
+}
+
+.card1 a, .card2 a{
+    text-decoration: none;
+}
+
+.divCard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-height: 100%;
+}
+
+.divCard img {
+    max-width: 200rem;
+    border-radius: 10px;
+}
+
+.datosFechas {
+    font-style: italic;
+    font-size: .85em;
+}
+
+footer {
+    /* background-color: #ff2fff; */
+    width: 100%;
+    height: 15vh;
+    z-index: 70;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* text-decoration: underline; */
+    font-weight: 700;
+    background: rgb(255, 47, 255);
+    background: linear-gradient(0deg, rgba(255, 47, 255, 1) 0%, rgba(0, 0, 0, 0.8127626050420168) 100%);
+    color: #fff;
+    position: relative;
+    bottom: 0;
+}
+
+.arrow-up {
+    width: 3rem;
+    position: fixed;
+    z-index: 130;
+    bottom: 3rem;
+    right: 3rem;
+}
+
+/* -------------------REGISTRO-------------------- */
+
+
+
+
+form {
+    display: flex;
+    color: #fff;
+    min-width: 70%;
+    max-width: 80%;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    background-color: rgba(25, 25, 25, 0.7);
+    padding: 3rem;
+    border-radius: 7px;
+}
+
+.datosForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin: 1rem; */
+    padding: 1rem;
+}
+
+label,
+input, select {
+    margin: 0 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.terminos {
+    font-size: .75rem;
+    font-style: italic;
+    text-transform: none;
+}
+
+input, select {
+    padding: .5rem;
+    font-style: italic;
+    background-color: #eee;
+    border-radius: 7px;
+}
+
+.btnForm {
+    padding: 1rem;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.btnForm button {
+    margin: 0 1rem;
+    border: 1px solid black;
+    background-color: yellow;
+    border-radius: 7px;
+    padding: 0.2rem 1rem;
+    color: black;
+    font-weight: 700;
+}
+
+/*responsive tablet */
+
+@media (max-width: 957px) {
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+}
+
+@media (max-width: 780px) {
+    .header {
+        flex-direction: row;
+    }
+
+    .divisor {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 5rem 0;
+    }
+
+    #divisor {
+        margin-bottom: 5rem;
+        font-size: 4rem;
+    }
+
+
+    .content-cards {
+        display: flex;
+        flex-direction: column;
+        /* background-color: yellow; */
+        height: auto;
+
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+        min-width: 100%;
+    }
+
+    .card1,
+    .card2 {
+        margin-top: 3rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .ocultar {
+        display: none;
+    }
+
+    #wrapper {
+        display: flex;
+        padding: 2rem;
+    }
+
+    #menu_on {
+        display: inline-block;
+        width: 30px;
+        height: 20px;
+        position: relative;
+        z-index: 2;
+    }
+
+    #menu_on span {
+        width: 100%;
+        height: 4px;
+        border-radius: 4px;
+        display: block;
+        position: absolute;
+        background: #ff2fff;
+        transition: all 0.25s ease;
+        /* Propiedades a animar | Tiempo | Tipo animación*/
+        transform-origin: 0px 100%;
+    }
+
+    #menu_on span:nth-child(2) {
+        top: calc(50% - 2px);
+    }
+
+    #menu_on span:nth-child(3) {
+        bottom: 0;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: -300px;
+        /* Escondemos nuestro menú con un valor negativo */
+        width: 300px;
+        z-index: 1;
+        padding: 90px 30px 30px;
+        background: #333;
+        opacity: 0;
+        transition: all 0.75s ease;
+        font-size: 1.2rem;
+        overflow-y: auto;
+    }
+
+    nav ul li {
+        list-style-type: none;
+        list-style-position: inside;
+    }
+
+    nav a {
+        display: block;
+        text-decoration: none;
+        padding: 10px;
+        color: rgba(255, 255, 255, 0.75);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all ease 0.25s;
+        font-size: 1.2em;
+    }
+
+    nav a:hover {
+        color: rgba(255, 255, 255, 1);
+        border-bottom-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .visible_menu span:nth-child(1) {
+        transform: rotate(45deg) translate(-2px, 1px);
+    }
+
+    .visible_menu span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .visible_menu span:nth-child(3) {
+        transform: rotate(-45deg) translate(-3px, 3px);
+    }
+
+    .visible_menu nav {
+        left: 0;
+        opacity: 1;
+    }
+
+    .visible_menu #content {
+        transform: translateX(260px);
+    }
+
+    footer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .datosForm-mq {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    form {
+        margin: 0 auto;
+    }
+}
+
+/*responsive mobile */
+@media all and (max-width: 480px) {
+    .divCard {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .card1,
+    .card2 {
+        min-width: 75%;
+        margin-top: 2rem;
+    }
+
+    .filtros{
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        margin: 0 auto;
+    }
+    .filtros input{
+        width: 100%;
+        margin-bottom: .5rem;
+    }
+}
